@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Products, Search
+from .models import Products, Search, Photo
 from django.http import JsonResponse
 from .form import ProductsForm
 from django.db.models import F  # 검색 순위 조회수 증가
@@ -26,6 +26,11 @@ def create(request):
             product = products_form.save(commit=False)
             product.user = request.user
             product.save()
+            for img in request.FILES.getlist("imgs"):
+                photo = Photo()
+                photo.product = product
+                photo.image = img
+                photo.save()
             return redirect("products:index")
 
     else:
@@ -61,12 +66,14 @@ def update(request, pk):
 # 상품 디테일 연결 기능
 def detail(request, pk):
     product = Products.objects.get(pk=pk)
+    product_image = product.photo_set.all()
     reviews = product.review_set.all().order_by("-pk")
     colors = list(str(product.color).split(", "))
     sizes = list(str(product.size).split(", "))
     context = {
         "reviews": reviews,
         "product": product,
+        "product_image": product_image,
         "review_list": reviews,
         "colors": colors,
         "sizes": sizes,
