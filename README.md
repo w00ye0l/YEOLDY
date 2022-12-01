@@ -150,6 +150,8 @@
 
 <img src="README.assets/ezgif.com-gif-maker-16691869017262.gif" alt="ezgif.com-gif-maker" style="zoom:150%;" />
 
+![image-20221201232500306](README.assets/image-20221201232500306.png)
+
 - 로그인 되었을 때, 해당 유저의 장바구니를 띄움
 - Product 별 수량, 색상, 사이즈를 띄우고, 전체 수량 및 개수도 띄움
 - 같은 Product여도, 색상 또는 사이즈가 다르면 다른 상품으로 인식하도록 함
@@ -161,7 +163,11 @@
 
 ### [ Kakaopay ]
 
-![orderlist](README.assets/orderlist.png)
+![image-20221201232157018](README.assets/image-20221201232157018.png)
+
+![image-20221201232206580](README.assets/image-20221201232206580.png)
+
+
 
 
 - 장바구니와 카카오페이 테스트 결제 시스템을 연동함
